@@ -6,13 +6,13 @@ from django.db import models
 class Elemento(models.Model):
     detalle_elemento = models.CharField("Elemento", max_length=50)
     def __str__(self):
-        return str(self.id)+'-'+self.detalle_elemento
+        return self.detalle_elemento
     
 
 class Estado(models.Model):
     detalle_estado = models.CharField("Estado", max_length=50)
     def __str__(self):
-        return str(self.id)+'-'+self.detalle_estado
+        return self.detalle_estado
     
 
 class Persona(models.Model):
@@ -20,7 +20,7 @@ class Persona(models.Model):
     telefono=models.CharField("Telefono", max_length=20,default="")
     mail=models.CharField("Mail", max_length=60, default="")
     def __str__(self):
-        return str(self.id)+'-'+self.nombre
+        return self.nombre
    
     
 
