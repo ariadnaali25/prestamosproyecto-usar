@@ -33,4 +33,4 @@ class Prestamo(models.Model):
     estado=models.ForeignKey(Estado, on_delete=models.CASCADE)
 
     def __str__(self):
-        return str(self.id)+'-'+self.fecha
+        return self.fecha

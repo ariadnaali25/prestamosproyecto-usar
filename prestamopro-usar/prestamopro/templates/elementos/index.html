@@ -16,14 +16,23 @@
 
         
         <ul class="list-group ">
-            {% for prestamo in listaprestamos %}
-                <li class="list-group-item rounded-top ">{{ prestamo.id }}</li>             
-                <li class="list-group-item list-group-item-primary">Fecha de préstamo: {{ prestamo.fecha }}</li>
+            {% for prestamo in listaprestamos %}            
+                <li class="list-group-item list-group-item-primary rounded-top">Fecha de préstamo: {{ prestamo.fecha }}</li>
                 <li class="list-group-item">Fecha posible de devolución: {{ prestamo.fechaposdev }}</li>
                 <li class="list-group-item">Fecha de devolución: {{ prestamo.fechadev }}</li>
                 <li class="list-group-item">Elemento: {{ prestamo.elemento }}</li>
                 <li class="list-group-item">Deudor: {{ prestamo.deudor }}</li>
-                <li class="list-group-item rounded-bottom list-group-item-warning">Estado: {{ prestamo.estado }}</li>
+
+                
+                {% if prestamo.estado.detalle_estado == "Disponible" %}
+                     <li class="list-group-item rounded-bottom list-group-item-warning text-dark rounded-bottom">Estado: {{ prestamo.estado }}</li>
+                {% elif  prestamo.estado.detalle_estado == "Reclamar" %}
+                     <li class="list-group-item rounded-bottom list-group-item-danger text-dark rounded-bottom">Estado: {{ prestamo.estado }}</li>
+                {% else %}
+                     <li class="list-group-item rounded-bottom list-group-item-info text-dark rounded-bottom">Estado: {{ prestamo.estado }}</li>
+                 
+                {% endif %}
+                    
                 <br>
              
             {% endfor %}
